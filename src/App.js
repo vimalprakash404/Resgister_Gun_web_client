@@ -146,13 +146,13 @@ const users = {
     Verified: false
   }
 };
-var index ="data789456"
+var index ="init123"
 
 function App() {
   
   const [userob,setuserob]=useState("")
   const gun = Gun({
-    peers: ['http:localhost:5000/gun']
+    peers: ['http:3.111.187.155:5623/gun']
   })
   
   function inituser()
