@@ -152,7 +152,7 @@ function App() {
   
   const [userob,setuserob]=useState("")
   const gun = Gun({
-    peers: ['http:3.111.187.155:5623/gun']
+    peers: ['http:192.168.102.163:5000/gun']
   })
   
   function inituser()
@@ -183,9 +183,22 @@ function App() {
     return (len > 0 ? new Array(++len).join('0') : '') + n
   }
   const input_ref= useRef();
-  useEffect(() => {
-    for (let i=1;i<=20;i++)
+  function getalluser()
+  {
+    for (let i=1;i<=3000;i++)
     {
+      gun.get(index+'/'+pad(i,3))
+      console.log("geting data:"+i);
+    }
+  }
+  gun.back(index, function(at) {
+    console.log("Server is active:", at.soul);
+  });
+  useEffect(() => {
+    
+    for (let i=1;i<=3000;i++)
+    {
+      console.log(i)
       gun.get(index+'/'+pad(i,3)).on((node) => { // Is called whenever text is updated
         if (Number(input_ref.current.value) === i)
         {
@@ -249,6 +262,7 @@ function App() {
 
   }
   inituser()
+  getalluser()
   return (
     <div>
       <Idinput onclick={getuser} refs={input_ref}></Idinput>
