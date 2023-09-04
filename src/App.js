@@ -5,19 +5,19 @@ import { useEffect, useRef, useState } from 'react';
 import Idinput from './components/Idinput';
 import Userdetails from './components/Userdetails';
 
-var index ="init123"
+var index ="init1234"
 
 function App() {
   
   const [userob,setuserob]=useState("")
   const gun = Gun({
-    peers: ['http://192.168.1.109:5000/gun']
+    peers: ['http://localhost:5000/gun']
   })
   
   function inituser()
   {
     {
-      gun.get(index+"/"+"init").put({"ttft":"u7ygyyg"})
+      gun.get(index+"/"+"init").put({"new user":"username"})
       
     }
   }
@@ -100,7 +100,7 @@ function App() {
 
   }
   inituser()
-  getalluser()
+  
   return (
     <div>
       <Idinput onclick={getuser} refs={input_ref}></Idinput>
